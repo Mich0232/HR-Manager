@@ -1,0 +1,10 @@
+body {
+  margin: 0; }
+
+.app-container {
+  display: flex;
+  min-height: 100vh; }
+
+.navigation-container {
+  background-color: yellow; }
+

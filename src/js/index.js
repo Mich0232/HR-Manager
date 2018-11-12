@@ -1,8 +1,13 @@
 import { render } from 'lit-html';
 
-import App from './App';
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { faHome, faChartLine, faUsers, faUserAstronaut } from "@fortawesome/free-solid-svg-icons/";
 
 
-const appContainer = App();
+library.add(faHome, faChartLine, faUsers, faUserAstronaut);
+dom.watch();
 
-render(appContainer, document.getElementById('app'));
+import App from './containers/App';
+import '../style/main.scss';
+
+render(App(), document.getElementById('app'));
