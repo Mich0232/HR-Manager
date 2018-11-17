@@ -1,7 +1,8 @@
 import { observable } from "mobx";
 
 const Store = observable({
-  mainContainer: 'home'
+  mainPane: 'home',
+  navigationHidden: false
 });
 
 export default Store;

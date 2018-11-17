@@ -2,53 +2,67 @@ import { html, render } from 'lit-html';
 import { observe, observable, action } from "mobx";
 
 import Store from '../store/store';
-import { setMainContainer } from '../store/actions';
-import { activeContainer, activeLink } from '../utils/routing';
+import { setMainPane } from '../store/actions';
+import { activePane } from '../utils/routing';
 
+/**
+ * Navigation State:
+ * 
+ * {string} mainPane
+ * {array} links
+ */
 const State = observable({
-  mainContainer: Store.mainContainer,
-  links: [],
-  activeLink: 0
+  mainPane: Store.mainPane,
+  navigationHidden: Store.navigationHidden,
+  links: []
 });
 
 observe(Store, () => {
-  State.mainContainer = Store.mainContainer
+  State.mainPane = Store.mainPane,
+  State.navigationHidden = Store.navigationHidden
 });
 
-observe(State, 'mainContainer', () => {
-  const { mainContainer, links } = State;
-  render(activeContainer(mainContainer, links), document.getElementById('MainContainer'));
+observe(State,'mainPane', () => {
+  const { mainPane, links } = State;
+
+  const mainPaneContainer = document.getElementById('MainPane');
+  if (!mainPaneContainer) return
+  render(activePane(mainPane, links), mainPaneContainer);
+
+  const navContainer = document.getElementById('Navigation');
+  if (!navContainer) return
+  render(Navigation(), navContainer)
 });
 
-observe(State, 'activeLink', () => {
-  render(Navigation(), document.getElementById('Navigation'));
+observe(State, 'navigationHidden', () => {
+  const navContainer = document.getElementById('Navigation');
+  navContainer.classList.toggle('navigation-container--hidden')
 });
 
-const loadLinks = (links) => {
+const loadLinks = (links, hash) => {
   action(() => {
     State.links = links;
   })();
+  setMainPane(hash)
 }
 
-const handleClick = (el, i) => {
-  action(() => {
-    setMainContainer(el)
-    State.activeLink = i
-  })()
+const handleClick = (el) => {
+    setMainPane(el)
 };
 
-const isActive = (i) => {
-  return i === State.activeLink ? ' navigation__item--active' : '';
+const isActive = (el) => {
+  return el === State.mainPane ? ' navigation__item--active' : '';
 };
 
 /**
  * Navigation container
  * 
- * @param {array} links 
+ * @param {array} links
+ * @param {string} hash
  */
-const Navigation = (links = State.links) => {
-  
-  loadLinks(links);
+const Navigation = (links = State.links, hash = State.mainPane) => {
+
+  loadLinks(links, hash);
   
   const linkIcons = ['home', 'chart-line', 'users']
   const clsNavHeader = 'navigation__header'
@@ -62,8 +76,8 @@ const Navigation = (links = State.links) => {
     </header>
     <ul class=${clsList}>
       ${State.links.map((el, i)=> html`
-        <li class=${clsItem}${isActive(i)}>
-          <a class=${clsItemLink} href=${'#'+ el} @click=${()=>handleClick(el, i)}>
+        <li class=${clsItem}${isActive(el)}>
+          <a class=${clsItemLink} href=${'#'+ el} @click=${()=>handleClick(el)}>
             <i class=${`fas fa-${linkIcons[i]}`}></i>
             ${el}
           </a>

@@ -1,21 +1,33 @@
 import { html } from 'lit-html';
+import { configure } from 'mobx';
 
 import Navigation from './Navigation';
-import { activeContainer } from '../utils/routing';
+import Header from './Header';
+import { activePane } from '../utils/routing';
 import Store from '../store/store';
+
+configure({
+    enforceActions: 'observed',
+    isolateGlobalState:  true
+});
 
 /**
  * App container
  */
 const App = () => {
-  const hash = window.location.hash.substr(1) || Store.mainContainer;
-  const links = ['home', 'dashboard', 'employees']
-  const clsNavigation = 'navigation-container'
-  const clsMainContainer = 'main-container'
+  const hash = window.location.hash.substr(1) || Store.mainPane;
+  const links = ['home', 'dashboard', 'employees'];
+  const clsNavigation = 'navigation-container';
+  const clsContent = 'content';
+  const clsHeader = 'header-container';
+  const clsMainPane = 'main-pane';
   
   return html`
-    <nav id='Navigation' class=${clsNavigation}>${Navigation(links)}</nav>
-    <div id='MainContainer' class=${clsMainContainer}>${activeContainer(hash, links)}</div>
+    <nav id='Navigation' class=${clsNavigation}>${Navigation(links, hash)}</nav>
+    <div class=${clsContent}>
+      <header id='Header' class=${clsHeader}>${Header()}</header>
+      <div id='MainPane' class=${clsMainPane}>${activePane(hash, links)}</div>
+    </div>
   `;
 }
 
