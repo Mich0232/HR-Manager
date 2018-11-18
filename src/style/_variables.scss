@@ -1,19 +1,27 @@
+// Colors
 $primary-color: #8ac4ff;
 $secondary-color: #b9dcff;
 $ternary-color: #8aadc5;
 $quaternary-color: #397298;
 
-$white: #fbfbfb;
-$grey-light: #f7f7f7;
-$grey-medium: #e2e2e2;
+$white: #ffffff;
+$grey-very-light: #fbfbfb;
+$grey-light: #f0f0f0;
+$grey-medium: #d3d3d3;
 $grey-dark: #6d777f;
 
-$text-color-basic: #131313;
-$text-color-secondary: #131313;
-$text-color-active: #131313;
+$text-color-basic: #1b1b1b;
+$text-color-secondary: #525252;
+$text-color-reverse: #cacaca;
+$text-color-hover: $quaternary-color;
 
 $basic-background-color: white;
 $aside-background-color: $grey-light;
-$aside-background-color-dark: $grey-medium;
+$aside-background-color-active: $grey-medium;
 
-$basic-border-color: lighten($grey-dark, 45%);
+$basic-border-color: darken($grey-light, 10%);
+
+// Shape
+$basic-margin: 12px;
+$basic-padding: 12px;
+$basic-border-radius: 4px;

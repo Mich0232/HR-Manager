@@ -1,0 +1,19 @@
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
+  color: $text-color-basic;
+
+  button, input {
+    color: $text-color-basic;
+  }
+
+  a:hover, button:hover {
+    color: $text-color-hover;
+  }
+
+  .content {
+    flex-basis: 100%;
+    background-color: $grey-very-light;
+  }
+}

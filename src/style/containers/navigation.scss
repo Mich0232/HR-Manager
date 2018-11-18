@@ -22,8 +22,7 @@
 
   &__list {
     width: 100%;
-    padding: 0 10px;
-    min-width: 200px;
+    min-width: 180px;
   }
 
   &__item {
@@ -32,7 +31,7 @@
     }
 
     &--active {
-      background-color: $aside-background-color-dark;
+      background-color: $aside-background-color-active;
     }
 
     &-link {

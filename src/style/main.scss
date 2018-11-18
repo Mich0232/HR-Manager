@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&subset=latin-ext');
+
 @import './variables';
 @import './reset.scss';
-@import './app.scss';
-@import './header.scss';
-@import './navigation.scss';
+
+@import './containers/app.scss';
+@import './containers/header.scss';
+@import './containers/navigation.scss';
+@import './containers/main-pane.scss';
+@import './containers/home.scss';
+
+@import './components/card.scss';

@@ -47,7 +47,7 @@ const Header = () => {
       ${renderBtnHideNavIcon}
     </button>
 `;
-}
+};
 
 
 export default Header;

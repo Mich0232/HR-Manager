@@ -1,0 +1,23 @@
+.card {
+  &-container {
+    display: inline-flex;
+    flex-direction: column;
+    margin: $basic-margin;
+    background: $white;
+    border: 1px solid $basic-border-color;
+    border-radius: $basic-border-radius;
+  }
+
+  &__header {
+    padding: 8px;
+    background-color: $secondary-color;
+
+    .svg-inline--fa {
+      margin-right: 5px;
+    }
+  }
+
+  &__content {
+    padding: 12px;
+  }
+}

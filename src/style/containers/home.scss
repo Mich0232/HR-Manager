@@ -1,0 +1,10 @@
+.home {
+  &__header {
+    flex-basis: 100%;
+  }
+
+  &__img-logo {
+    height: 200px;
+    margin: $basic-margin;
+  }
+}

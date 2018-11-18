@@ -20,7 +20,7 @@ const App = () => {
   const clsNavigation = 'navigation-container';
   const clsContent = 'content';
   const clsHeader = 'header-container';
-  const clsMainPane = 'main-pane';
+  const clsMainPane = 'main-pane-container';
   
   return html`
     <nav id='Navigation' class=${clsNavigation}>${Navigation(links, hash)}</nav>
@@ -29,6 +29,6 @@ const App = () => {
       <div id='MainPane' class=${clsMainPane}>${activePane(hash, links)}</div>
     </div>
   `;
-}
+};
 
 export default App;
