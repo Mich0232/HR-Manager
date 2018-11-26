@@ -3,31 +3,28 @@
 /**
  * Container State
  * 
- * {type} propertyNameOne 
  * {array} propertyNameTwo
  */
 const State = observable({
-  propertyNameOne: Store.propertyNameOne,
   propertyNameTwo: []
 });
 
 observe(Store, () => {
-  State.propertyNameOne = Store.propertyNameOne
-});
+  const { propertyNameTwo } = State;
 
-observe(State,'propertyNameOneTwo', () => {
-  const { propertyNameOne, propertyNameTwo } = State;
+ const navContainer = document.getElementById('Navigation');
+  if (!navContainer) return
+  render(Navigation(propertyNameTwo), navContainer)});
+
+observe(State,'propertyNameTwo', () => {
+  const { propertyNameOne } = State;
 
   const mainContainer = document.getElementById('MainContainer');
   if (!mainContContainer) return
   render(SomeContainer(propertyNameOne), mainContContainer);
-
-  const navContainer = document.getElementById('Navigation');
-  if (!navContainer) return
-  render(Navigation(propertyNameTwo), navContainer)
 });
 
-...
+......
 
 /**
  * Navigation container

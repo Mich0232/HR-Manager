@@ -1,29 +1,15 @@
 import { html, render } from 'lit-html';
-import { observe, observable } from "mobx";
+import { observe } from "mobx";
 
 import Store from '../store/store';
 import { toggleNavigation } from '../store/actions';
 
 
-/**
- * Header State:
- * 
- * {boolean} navigationHidden
- */
-const State = observable({
-  navigationHidden: Store.navigationHidden
-});
-
 observe(Store, 'navigationHidden', () => {
-  State.navigationHidden = Store.navigationHidden
-});
-
-observe(State, () => {
   const headerContainer = document.getElementById('Header');
   if (!headerContainer) return
   render(Header(), headerContainer);
 });
-
 
 const handleClickHideNav = () => {
   toggleNavigation();
@@ -35,10 +21,10 @@ const handleClickHideNav = () => {
 const Header = () => {
 
   const clsBtnHideNav = 'header__btn-hide';
-  const renderBtnHideNavIcon = State.navigationHidden
+  const renderBtnHideNavIcon = Store.navigationHidden
     ? html`<i class='fas fa-angle-right header__btn-hide-icon'></i>`
     : html`<i class='fas fa-angle-left header__btn-hide-icon'></i>`;
-  const btnHideNavTitle = State.navigationHidden
+  const btnHideNavTitle = Store.navigationHidden
     ? 'Show navigation'
     : 'Hide navigation';
 

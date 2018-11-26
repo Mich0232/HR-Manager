@@ -8,10 +8,10 @@ import { html } from 'lit-html';
  * @param {string} header 
  * @param {*} content 
  */
-const Card = (icon = 'align-justify', header, content ) => {
-  const clsContainer = 'card-container'
-  const clsHeader = 'card__header'
-  const clsContent = 'card__content'
+const Card = (icon = 'align-justify', header, content, id = '' ) => {
+  const clsContainer = 'card-container';
+  const clsHeader = 'card__header';
+  const clsContent = 'card__content';
 
   return html`
     <div class=${clsContainer}>
@@ -19,7 +19,7 @@ const Card = (icon = 'align-justify', header, content ) => {
         <i class=${`fas fa-${icon}`}></i>
         ${header}
       </header>
-      <div class=${clsContent}>${content}</div>
+      <div id=${id} class=${clsContent}>${content}</div>
     </div>
   `;
 };

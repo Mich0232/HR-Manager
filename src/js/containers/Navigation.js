@@ -8,22 +8,15 @@ import { activePane } from '../utils/routing';
 /**
  * Navigation State:
  * 
- * {string} mainPane
  * {array} links
  */
 const State = observable({
-  mainPane: Store.mainPane,
-  navigationHidden: Store.navigationHidden,
   links: []
 });
 
-observe(Store, () => {
-  State.mainPane = Store.mainPane,
-  State.navigationHidden = Store.navigationHidden
-});
-
-observe(State,'mainPane', () => {
-  const { mainPane, links } = State;
+observe(Store,'mainPane', () => {
+  const { mainPane } = Store;
+  const { links } = State;
 
   const mainPaneContainer = document.getElementById('MainPane');
   if (!mainPaneContainer) return
@@ -34,8 +27,9 @@ observe(State,'mainPane', () => {
   render(Navigation(), navContainer)
 });
 
-observe(State, 'navigationHidden', () => {
+observe(Store, 'navigationHidden', () => {
   const navContainer = document.getElementById('Navigation');
+  if (!navContainer) return
   navContainer.classList.toggle('navigation-container--hidden')
 });
 
@@ -51,7 +45,7 @@ const handleClick = (el) => {
 };
 
 const isActive = (el) => {
-  return el === State.mainPane ? ' navigation__item--active' : '';
+  return el === Store.mainPane ? ' navigation__item--active' : '';
 };
 
 /**
@@ -60,7 +54,7 @@ const isActive = (el) => {
  * @param {array} links
  * @param {string} hash
  */
-const Navigation = (links = State.links, hash = State.mainPane) => {
+const Navigation = (links = State.links, hash = Store.mainPane) => {
 
   loadLinks(links, hash);
   

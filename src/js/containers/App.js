@@ -7,7 +7,7 @@ import { activePane } from '../utils/routing';
 import Store from '../store/store';
 
 configure({
-    enforceActions: 'observed',
+    enforceActions: 'always',
     isolateGlobalState:  true
 });
 
