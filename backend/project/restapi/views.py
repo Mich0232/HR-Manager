@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User, Group
+from .models import Employees
 from rest_framework import viewsets
-from restapi.serializers import UserSerializer, GroupSerializer
+from rest_framework import generics
+from restapi.serializers import UserSerializer, GroupSerializer, EmployeesSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -16,3 +18,11 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class EmployeesViewSet(generics.ListAPIView):
+    """
+    API endpoint that allows employees to be viewed or edited.
+    """
+    queryset = Employees.objects.all()
+    serializer_class = EmployeesSerializer
