@@ -26,3 +26,19 @@ class EmployeesViewSet(generics.ListAPIView):
     """
     queryset = Employees.objects.all()
     serializer_class = EmployeesSerializer
+
+
+class EmployeeDetailsViewSet(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that allows single employee to be viewed or edited.
+    """
+    queryset = Employees.objects.all()
+    serializer_class = EmployeesSerializer
+
+
+class EmployeeCreateViewSet(generics.CreateAPIView):
+    """
+    API endpoint that allows employee to be created.
+    """
+    queryset = Employees.objects.all()
+    serializer_class = EmployeesSerializer
