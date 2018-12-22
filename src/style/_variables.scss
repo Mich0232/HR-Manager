@@ -1,25 +1,30 @@
 // Colors
-$primary-color: #8ac4ff;
-$secondary-color: #b9dcff;
-$ternary-color: #8aadc5;
-$quaternary-color: #397298;
+$primary-color: #4687ff;
+$secondary-color: #8E0CE8;
+$ternary-color: #FF0000;
+$quaternary-color: #E87C0C;
+$quinquereme-color: #FFE30D;
+
+$primary-light-color: #92B9FF;
+$primary-dark-color: #386CCC;
+$primary-darkest-color: #23437F;
 
 $white: #ffffff;
 $grey-very-light: #fbfbfb;
-$grey-light: #f0f0f0;
+$grey-light: #e5e5e5;
 $grey-medium: #d3d3d3;
 $grey-dark: #6d777f;
 
 $text-color-basic: #1b1b1b;
 $text-color-secondary: #525252;
 $text-color-reverse: #cacaca;
-$text-color-hover: $quaternary-color;
+$text-color-hover: $primary-color;
 
 $basic-background-color: white;
 $aside-background-color: $grey-light;
 $aside-background-color-active: $grey-medium;
 
-$basic-border-color: darken($grey-light, 10%);
+$basic-border-color: darken($aside-background-color, 10%);
 
 // Shape
 $basic-margin: 12px;

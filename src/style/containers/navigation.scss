@@ -11,6 +11,10 @@
     &--hidden {
       width: 0;
       border: none;
+
+      .navigation__item {
+        right: 150px;
+      }
     }
   }
 
@@ -21,9 +25,12 @@
     height: 60px;
     width: 60px;
     padding: 20px;
+    margin: 60px 0;
     font-size: 2em;
+    border: 2px solid white;
     border-radius: 50%;
-    background-color: $ternary-color;
+    background-color: $grey-medium;
+    box-shadow: 0 0 0 1px $primary-color;
   }
 
   &__list {
@@ -32,18 +39,36 @@
   }
 
   &__item {
+    position: relative;
+    right: 0;
+    border-left: 4px solid transparent;
+
+    &:nth-of-type(1) {
+      transition: right 0.6s;
+    }
+
+    &:nth-of-type(2) {
+      transition: right 0.7s;
+    }
+
+    &:nth-of-type(3) {
+      transition: right 0.8s;
+    }
+
     &:not(:last-child) {
       border-bottom: 1px solid $basic-border-color;
     }
 
     &--active {
       background-color: $aside-background-color-active;
+      border-left: 4px solid $primary-color;
     }
 
     &-link {
       display: inline-block;
       width: 100%;
       padding: 15px;
+      text-transform: capitalize;
 
       .svg-inline--fa {
         display: inline-block;
