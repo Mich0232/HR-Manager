@@ -11,6 +11,7 @@
   &__header {
     padding: 8px;
     background-color: $primary-light-color;
+    border-radius: $basic-border-radius $basic-border-radius 0 0;
 
     .svg-inline--fa {
       margin-right: 5px;
