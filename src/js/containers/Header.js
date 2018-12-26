@@ -4,6 +4,8 @@ import { observe } from "mobx";
 import Store from '../store/store';
 import { toggleNavigation } from '../store/actions';
 
+import Logo from '../../images/logo_transparent.png';
+
 
 observe(Store, 'navigationHidden', () => {
   const headerContainer = document.getElementById('Header');
@@ -11,7 +13,7 @@ observe(Store, 'navigationHidden', () => {
   render(Header(), headerContainer);
 });
 
-const handleClickHideNav = () => {
+const handleClickToggleNav = () => {
   toggleNavigation();
 }
 
@@ -20,19 +22,35 @@ const handleClickHideNav = () => {
  */
 const Header = () => {
 
-  const clsBtnHideNav = 'header__btn-hide';
+  const clsBtnToggleNav = 'header__btn-toggle';
+  const clsMenu = 'header-menu';
+  const clsMenuItem = 'header-menu__item';
+  const clsImageLogo = 'header-menu__logo';
+  
   const renderBtnHideNavIcon = Store.navigationHidden
-    ? html`<i class='fas fa-angle-right header__btn-hide-icon'></i>`
-    : html`<i class='fas fa-angle-left header__btn-hide-icon'></i>`;
-  const btnHideNavTitle = Store.navigationHidden
+    ? html`<i class='fas fa-angle-right header__btn-toggle-icon'></i>`
+    : html`<i class='fas fa-angle-left header__btn-toggle-icon'></i>`;
+  const btnToggleNavTitle = Store.navigationHidden
     ? 'Show navigation'
     : 'Hide navigation';
 
   return html`
-    <button class=${clsBtnHideNav} @click=${handleClickHideNav} title=${btnHideNavTitle}>
+    <button class=${clsBtnToggleNav} @click=${handleClickToggleNav} title=${btnToggleNavTitle}>
       ${renderBtnHideNavIcon}
     </button>
-`;
+    <div class=${clsMenu}>
+      <div class=${clsMenuItem}>
+        <i class='fas fa-bell'></i>
+      </div>
+      <div class=${clsMenuItem}>
+        <i class='fas fa-envelope'></i>
+      </div>
+      <div class=${clsMenuItem}>
+        <img class=${clsImageLogo} src=${Logo}>
+        <p>HR Manager</p>
+      </div>
+    </div>
+  `;
 };
 
 

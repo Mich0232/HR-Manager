@@ -1,33 +1,24 @@
 import { html } from 'lit-html';
-import { until } from 'lit-html/directives/until.js';
 
-
-import Logo from '../../images/logo_transparent.png';
 import Card from '../components/Card';
 import Notifications from './Notifications';
-import Store from '../store/store';
-import { getEmployees } from '../store/actions';
-
-function renderEmployees () {
-
-};
 
 /**
  * Home
  */
 const Home = () => {
-  const clsHeader = 'home__header';
-  const clsImageLogo = 'home__img-logo';
-  
-  
+  const clsHeader = 'home-header';
+  const clsHeaderTitle = 'home-header__title';
+
   return html`
     <header class=${clsHeader}>
-      <img class=${clsImageLogo} src=${Logo}>
+      <h2 class=${clsHeaderTitle}>Welcome</h2>
     </header>
-    ${Card('bell','Notifications', Notifications(['a','b','c','d']), 'notification-container')}
+    ${Card('bell','Notifications', Notifications(['a','b','c','d']), 'notifications-container')}
     ${Card('envelope','Messages', html`<div>Messages</div>`)}
     ${Card(undefined,'Reminders', html`<div>Reminders</div>`)}
     ${Card('check-square','Checklist', html`<h3>Checklist</h3>`)}
+    ${Card('birthday-cake','Birthdays', html`<h3>Birthdays</h3>`)}
   `;
 };
 

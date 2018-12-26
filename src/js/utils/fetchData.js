@@ -1,15 +1,19 @@
-const prefix = 'http://127.0.0.1:8000/'
+import { prefix } from '../../config';
 
 export const fetchData = (url = '', method = 'GET', body = undefined, query = '') => {
-  return fetch(prefix + 'api/' + url + query, {
+  return fetch(prefix + 'api/' + url + '/' + query, {
     method: method,
     body: body
     })
   .then(function(response) {
-    return response.json();
+    const { ok, statusText } = response;
+    if (ok) {
+      return response.json();
+    } else {
+      console.log(statusText);
+    }
   })
-  .then(function(myJson) {
-    const data = JSON.stringify(myJson.results[0].name);
+  .then(function(data) {
     return data
   })
   .catch((e) => {

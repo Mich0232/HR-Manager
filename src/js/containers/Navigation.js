@@ -58,7 +58,7 @@ const Navigation = (links = State.links, hash = Store.mainPane) => {
 
   loadLinks(links, hash);
   
-  const linkIcons = ['home', 'chart-line', 'users']
+  const linkIcons = ['home', 'chart-line', 'users','briefcase']
   const clsNavHeader = 'navigation__header'
   const clsList = 'navigation__list'
   const clsItem = 'navigation__item';

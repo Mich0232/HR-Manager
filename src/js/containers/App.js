@@ -16,7 +16,7 @@ configure({
  */
 const App = () => {
   const hash = window.location.hash.substr(1) || Store.mainPane;
-  const links = ['home', 'dashboard', 'employees'];
+  const links = ['home', 'dashboard', 'employees', 'company'];
   const clsNavigation = 'navigation-container';
   const clsContent = 'content';
   const clsHeader = 'header-container';

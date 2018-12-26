@@ -10,7 +10,9 @@ import {
   faAlignJustify,
   faBell,
   faEnvelope,
-  faCheckSquare
+  faCheckSquare,
+  faBriefcase,
+  faBirthdayCake
 } from "@fortawesome/free-solid-svg-icons/";
 
 library.add(
@@ -23,7 +25,9 @@ library.add(
   faAlignJustify,
   faBell,
   faEnvelope,
-  faCheckSquare
+  faCheckSquare,
+  faBriefcase,
+  faBirthdayCake
 );
 dom.watch();
 

@@ -11,7 +11,7 @@ import { html } from 'lit-html';
 const Card = (icon = 'align-justify', header, content, id = '' ) => {
   const clsContainer = 'card-container';
   const clsHeader = 'card__header';
-  const clsContent = 'card__content';
+  const clsContent = `card__content ${id}`;
 
   return html`
     <div class=${clsContainer}>

@@ -5,12 +5,12 @@ import { observable } from "mobx";
  * 
  * {string} mainPane
  * {boolean} navigationHidden
- * {array} employeesList
+ * {array || null} employeesList
  */
 const Store = observable({
   mainPane: 'home',
   navigationHidden: false,
-  employeesList: []
+  employeesList: null
 });
 
 export default Store;

@@ -13,7 +13,15 @@ export const toggleNavigation = action(() => {
 });
 
 export const getEmployees = action(() => {
-  Store.employeesList =  fetchData('employees/');
-  const data =  fetchData('employees/').then((resolve) => resolve.text());
-  console.log(data);
+  fetchData('employees')
+  .then((data) => {
+    if (data) {
+      Store.employeesList = data.results;
+    } else {
+      console.log('Cannot fetch list of employees');
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 });
