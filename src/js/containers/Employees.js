@@ -23,7 +23,6 @@ function renderEmployees () {
 /**
  * Employees
  * 
- * @param {string} title 
  */
 const Employees = () => html`
   ${Card('users','Employees', until(renderEmployees(), Loader()))}

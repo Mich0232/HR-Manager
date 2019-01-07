@@ -19,4 +19,4 @@ export const fetchData = (url = '', method = 'GET', body = undefined, query = ''
   .catch((e) => {
     console.log(e);
   });
-}
+};
