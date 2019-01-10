@@ -1,10 +1,13 @@
 from django.contrib.auth.models import User, Group
-from .models import Employees
+
 from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework import mixins
 from rest_framework.response import Response
-from restapi.serializers import UserSerializer, GroupSerializer, EmployeesSerializer, EmployeesBirthdaysSerializer
+
+from .serializers import UserSerializer, GroupSerializer, EmployeesSerializer, EmployeesBirthdaysSerializer
+from .models import Employees
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -51,12 +54,7 @@ class EmployeesBirthdaysViewSet(mixins.ListModelMixin,
     """
     API endpoint that allows see employees birthdays.
     """
-    queryset = Employees.objects.extra(select={
-    'birthday_month': 'strftime("%m", birthday)',
-    'birthday_day': 'strftime("%d", birthday)'
-    },
-    order_by=['birthday_month','birthday_day']
-    )
+    queryset = Employees.objects.all()
     serializer_class = EmployeesBirthdaysSerializer
 
     def get(self, request, *args, **kwargs):
